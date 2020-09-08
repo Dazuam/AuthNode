@@ -1,24 +1,17 @@
-// Update with your config settings.
+// knexfile.js
 const dotenv = require('dotenv');
 
-let b = dotenv.config();
+dotenv.config();
 
-if (b.error) {
-  throw b.error
-}
-
-console.log('parsed: ', b.parsed);
-
-let a = {
-
+module.exports = {
   development: {
     client: 'mysql2',
     connection: {
       host: process.env.DB_DEVELOPMENT_HOST || 'localhost',
       port: process.env.DB_DEVELOPMENT_PORT || '3306',
-      database: process.env.DB_DEVELOPMENT_DATABASE || 'my_database',
-      user: process.env.DB_DEVELOPMENT_USER || 'root',
-      password: process.env.DB_DEVELOPMENT_PASSWORD || '',
+      database: process.env.DB_DEVELOPMENT_NAME || 'nodeauth_db',
+      user:  process.env.DB_DEVELOPMENT_USER || 'root',
+      password: process.env.DB_DEVELOPMENT_PASSWORD || 'root'
     },
     pool: {
       min: 2,
@@ -28,15 +21,14 @@ let a = {
       tableName: 'knex_migrations'
     }
   },
-
   production: {
     client: 'mysql2',
     connection: {
       host: process.env.DB_PRODUCTION_HOST || 'localhost',
       port: process.env.DB_PRODUCTION_PORT || '3306',
-      database: process.env.DB_PRODUCTION_DATABASE || 'my_database',
-      user: process.env.DB_PRODUCTION_USER || 'root',
-      password: process.env.DB_PRODUCTION_PASSWORD || '',
+      database: process.env.DB_PRODUCTION_NAME || 'nodeauth_db',
+      user:  process.env.DB_PRODUCTION_USER || 'root',
+      password: process.env.DB_PRODUCTION_PASSWORD || ''
     },
     pool: {
       min: 2,
@@ -45,11 +37,5 @@ let a = {
     migrations: {
       tableName: 'knex_migrations'
     }
-  },
-
+  }
 };
-
-console.log(a);
-
-
-module.exports = a;
