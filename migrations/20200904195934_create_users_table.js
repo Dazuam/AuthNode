@@ -1,4 +1,3 @@
-
 exports.up = function(knex) {
   return knex.schema
     .createTable('users', (table) => {
@@ -6,6 +5,7 @@ exports.up = function(knex) {
       table.string('name', 255).notNullable();
       table.string('email', 255).notNullable();
       table.string('password', 512).notNullable();
+      table.string('role', 255).notNullable();
       table.timestamps(true, true);
     });
 };
